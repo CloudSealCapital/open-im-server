@@ -88,15 +88,19 @@ func Start[T any](ctx context.Context, disc *conf.Discovery, prometheusConfig *c
 	if err != nil {
 		return err
 	}
+	log.ZDebug(ctx, "rpc start", "prometheusConfig", prometheusConfig)
 	var prometheusListenAddr string
 	if autoSetPorts {
 		prometheusListenAddr = net.JoinHostPort(listenIP, "0")
 	} else {
-		prometheusPort, err := datautil.GetElemByIndex(prometheusConfig.Ports, index)
-		if err != nil {
-			return err
+		if len(prometheusConfig.Ports) > 0 {
+			prometheusPort, err := datautil.GetElemByIndex(prometheusConfig.Ports, index)
+			if err != nil {
+				return err
+			}
+			prometheusListenAddr = net.JoinHostPort(listenIP, strconv.Itoa(prometheusPort))
 		}
-		prometheusListenAddr = net.JoinHostPort(listenIP, strconv.Itoa(prometheusPort))
+
 	}
 
 	watchConfigNames = append(watchConfigNames, conf.LogConfigFileName)

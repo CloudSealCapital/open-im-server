@@ -59,6 +59,7 @@ func (m *MsgGatewayCmd) runE() error {
 	m.msgGatewayConfig.Index = config.Index(m.Index())
 	rpc := m.msgGatewayConfig.MsgGateway.RPC
 	var prometheus config.Prometheus
+	// ?????
 	return startrpc.Start(
 		m.ctx, &m.msgGatewayConfig.Discovery,
 		&prometheus,
