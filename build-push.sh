@@ -12,7 +12,7 @@ docker push registry.cn-hangzhou.aliyuncs.com/caa/openim-rpc-friend:latest
 
 ## openim-rpc-third
 ## docker build -f third.Dockerfile -t registry.cn-hangzhou.aliyuncs.com/caa/openim-rpc-third:latest .
-docker docker build -f third.Dockerfile -t registry.cn-hangzhou.aliyuncs.com/caa/openim-rpc-third:latest .
+docker build -f third.Dockerfile -t registry.cn-hangzhou.aliyuncs.com/caa/openim-rpc-third:latest .
 docker push registry.cn-hangzhou.aliyuncs.com/caa/openim-rpc-third:latest
 
 ## openim-api
